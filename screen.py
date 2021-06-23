@@ -4,7 +4,8 @@ from asteroid import Asteroid
 from ufo import UFO
 from player import Player
 
-class Screen():
+
+class Screen:
     def __init__(self, width, height, asteroids, ufo, player):
         self.width = width
         self.height = height
