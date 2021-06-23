@@ -2,16 +2,18 @@ import pygame
 import random
 
 from pygame.constants import KEYDOWN, K_1, K_2, K_3, K_BACKSPACE, K_DOWN, K_ESCAPE, K_LEFT, K_RIGHT, K_SPACE, K_UP
+
+
 class Asteroid:
-    def __init__(self, surface, position, color, size, type, dx, dy, speed):
+    def __init__(self, surface, position, color, size, dx, dy, speed):
         self.surface = surface
-        self.position= position
+        self.position = position
         self.color = color
-        self.size= size
-        self.type= type
+        self.size = size
         self.dx = dx
         self.dy = dy
         self.speed = speed
+
     def draw_asteroid(self):
         if self.type == 3:
             self.size = 20
@@ -29,29 +31,28 @@ class Asteroid:
             self.position[0] += self.speed
         if self.dx == 'LEFT':
             self.position[0] -= self.speed
-        
+
         if self.dy == 'UP':
             self.position[1] -= self.speed
         if self.dy == 'DOWN':
             self.position[1] += self.speed
-        
-        
 
         # Asteroid crossing movements through screen
-        if self.position[0] > 800: # Crossing horizontally
+        if self.position[0] > 800:  # Crossing horizontally
             self.position[0] = 0
         if self.position[0] < 0:
             self.position[0] = 800
 
-        if self.position[1] > 600: # Crossing vertically
+        if self.position[1] > 600:  # Crossing vertically
             self.position[1] = 0
         if self.position[1] < 0:
             self.position[1] = 600
 
         pygame.display.flip()
-    def split_asteroid():
+
+    def split_asteroid(self):
         pass
-    
+
     # Adapt to collision with bullet later
 
     '''def collision_with_wall(self):
@@ -80,7 +81,8 @@ class Asteroid:
         
         if self.collision_with_wall():
             self.type = random.randrange(1, 4)'''
-            
+
+
 # --TESTING CLASS-- #
 
 pygame.init()
@@ -92,22 +94,21 @@ init_dx = ['RIGHT', 'LEFT']
 init_dy = ['UP', 'DOWN']
 position = [400, 300]
 asteroid = Asteroid(screen, position,
-                    (255, 0 , 0), 20, 3,
+                    (255, 0, 0), 20, 3,
                     random.choice(init_dx), random.choice(init_dy), 0.25)
-
 
 running = True
 while running:
 
     asteroid.draw_asteroid()
     asteroid.move_asteroid()
-    #asteroid.collision_with_wall()
-    #asteroid.change_asteroid_type()
+    # asteroid.collision_with_wall()
+    # asteroid.change_asteroid_type()
 
     for event in pygame.event.get():
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
-                running = False 
+                running = False
                 pygame.quit()
             if event.key == K_1:
                 asteroid.type = 1
@@ -115,8 +116,8 @@ while running:
                 asteroid.type = 2
             if event.key == K_3:
                 asteroid.type = 3
-        
-        # Change direction just for mechanics testing
+
+            # Change direction just for mechanics testing
             if event.key == K_RIGHT:
                 asteroid.dx = 'RIGHT'
             if event.key == K_LEFT:
@@ -125,10 +126,10 @@ while running:
                 asteroid.dy = 'UP'
             if event.key == K_DOWN:
                 asteroid.dy = 'DOWN'
-        # Change asteroid speed for mechanics testing
+            # Change asteroid speed for mechanics testing
             if event.key == K_BACKSPACE:
                 asteroid.speed = 0.125
             if event.key == K_SPACE:
                 asteroid.speed = 0.5
-            
-    screen.fill((0,0,0))
+
+    screen.fill((0, 0, 0))
