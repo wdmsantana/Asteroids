@@ -1,7 +1,8 @@
 import pygame
 
-class Bullet():
-    
+
+class Bullet:
+
     def __init__(self, parent, image, rect, speed, dx, dy):
         self.parent = parent
         self.image = image
