@@ -12,6 +12,7 @@ class Asteroid:
         self.dx = dx
         self.dy = dy
         self.speed = speed
+        
     def draw_asteroid(self):
         if self.type == 3:
             self.size = 20
