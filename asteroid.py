@@ -1,12 +1,10 @@
 import pygame
 import random
-
+from constants import *
 from pygame.constants import *
 
 
-LARGE_ASTEROID = 20
-NORMAL_ASTEROID = 12
-LITTLE_ASTEROID = 8
+
 
 
 class Asteroid:
