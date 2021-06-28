@@ -26,6 +26,7 @@ class Screen:
     def main_loop(self):
         while True:
             self._handle_input()
+            self._process_game_logic()
             self.draw_hud()
 
     def _init_pygame(self):
